@@ -27,15 +27,22 @@
         <div class="hero-inner">
             <div class="hero-logo" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Mōri logo">
-                    <rect width="100" height="100" fill="#c0392b" rx="0"/>
-                    <!-- Top arc / topknot -->
-                    <path d="M 18 46 Q 50 6 82 46" stroke="white" stroke-width="11" fill="none" stroke-linecap="round"/>
-                    <!-- Centre circle -->
-                    <circle cx="50" cy="57" r="12" fill="white"/>
-                    <!-- Bottom-left circle -->
-                    <circle cx="30" cy="80" r="11" fill="white"/>
-                    <!-- Bottom-right circle -->
-                    <circle cx="70" cy="80" r="11" fill="white"/>
+                    <defs>
+                        <clipPath id="circle-clip">
+                            <circle cx="50" cy="50" r="50"/>
+                        </clipPath>
+                    </defs>
+                    <circle cx="50" cy="50" r="50" fill="#c0392b"/>
+                    <g clip-path="url(#circle-clip)">
+                        <!-- Top arc / topknot -->
+                        <path d="M 18 41 Q 50 1 82 41" stroke="white" stroke-width="11" fill="none" stroke-linecap="round"/>
+                        <!-- Centre circle -->
+                        <circle cx="50" cy="52" r="12" fill="white"/>
+                        <!-- Bottom-left circle -->
+                        <circle cx="30" cy="75" r="11" fill="white"/>
+                        <!-- Bottom-right circle -->
+                        <circle cx="70" cy="75" r="11" fill="white"/>
+                    </g>
                 </svg>
             </div>
             <p class="hero-eyebrow">Raindrop Studios &nbsp;·&nbsp; CS 426 Senior Project &nbsp;·&nbsp; Spring 2026</p>
