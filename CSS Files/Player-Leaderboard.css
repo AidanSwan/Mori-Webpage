@@ -1,0 +1,284 @@
+/* ============================================================
+   Player-Leaderboard.css — Leaderboard Page
+   Raindrop Studios / Mōri
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+    --bg:           #0a0806;
+    --bg-surface:   #110e09;
+    --bg-card:      #1a1510;
+    --red:          #c0392b;
+    --red-light:    #e74c3c;
+    --gold:         #c9a84c;
+    --gold-light:   #e8c870;
+    --gold-dim:     rgba(201, 168, 76, 0.12);
+    --text:         #f0e6d0;
+    --text-sec:     #9a8870;
+    --text-muted:   #5a4a38;
+    --border:       rgba(201, 168, 76, 0.18);
+    --border-red:   rgba(192, 57, 43, 0.35);
+    --rank-gold:    #e8c870;
+    --rank-silver:  #b8c0c8;
+    --rank-bronze:  #cd7f32;
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px);
+    color: var(--text);
+    font-family: 'Raleway', 'Georgia', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Sticky Header ──────────────────────────────────────────── */
+#WelcomeHeader {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 24px 0;
+    background: linear-gradient(180deg, #0d0a06 0%, #130f0a 100%);
+    border-bottom: 1px solid var(--border-red);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.9);
+}
+
+.Animated-Text {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-size: clamp(1.1rem, 2.8vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-align: center;
+    animation: title-shimmer 4s ease-in-out infinite alternate;
+}
+
+@keyframes title-shimmer {
+    0%   { color: #f0e6d0; text-shadow: 0 0 12px rgba(201,168,76,0.2); }
+    45%  { color: #e8c870; text-shadow: 0 0 22px rgba(201,168,76,0.55); }
+    100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
+}
+
+/* ── Navigation ─────────────────────────────────────────────── */
+#Directory { width: 100%; }
+
+.nav-bar {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 0;
+}
+
+.button {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-sec);
+    padding: 7px 20px;
+    border: 1px solid var(--text-muted);
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.button:hover,
+.button.active {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+    box-shadow: 0 0 14px rgba(192,57,43,0.45);
+}
+
+/* ── Main Container ─────────────────────────────────────────── */
+#Leaderboard-Description {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 24px 80px;
+}
+
+/* ── Section Title ──────────────────────────────────────────── */
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    margin: 10px auto 36px;
+    border-radius: 1px;
+}
+
+/* ── Coming Soon Banner ─────────────────────────────────────── */
+.coming-soon-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.coming-soon-banner::before,
+.coming-soon-banner::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-red));
+}
+.coming-soon-banner::after {
+    background: linear-gradient(90deg, var(--border-red), transparent);
+}
+
+.coming-soon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red-dim, rgba(192,57,43,0.15));
+    border: 1px solid var(--border-red);
+    border-radius: 2px;
+    padding: 8px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red-light);
+}
+
+.coming-soon-badge::before {
+    content: '⚔';
+    font-size: 0.9rem;
+}
+
+/* ── Leaderboard Table ──────────────────────────────────────── */
+.leaderboard-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 32px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table thead {
+    background: linear-gradient(90deg, #1c1108, #221610);
+    border-bottom: 1px solid var(--border-red);
+}
+
+.leaderboard-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.leaderboard-table th:first-child { text-align: center; width: 70px; }
+.leaderboard-table th:nth-child(3),
+.leaderboard-table th:nth-child(4) { text-align: right; }
+
+.leaderboard-table td {
+    padding: 14px 18px;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    font-style: italic;
+}
+
+.leaderboard-table td:first-child {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.leaderboard-table td:nth-child(3),
+.leaderboard-table td:nth-child(4) { text-align: right; }
+
+/* rank medal colors */
+.leaderboard-table tr:nth-child(1) td:first-child { color: var(--rank-gold); }
+.leaderboard-table tr:nth-child(2) td:first-child { color: var(--rank-silver); }
+.leaderboard-table tr:nth-child(3) td:first-child { color: var(--rank-bronze); }
+
+.leaderboard-table tbody tr:hover {
+    background: rgba(201,168,76,0.04);
+}
+
+/* ── Footer note ────────────────────────────────────────────── */
+.leaderboard-note {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ── Fade-in animation ──────────────────────────────────────── */
+.fade-in {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Scroll-to-top ──────────────────────────────────────────── */
+#scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#scroll-top.visible { opacity: 1; pointer-events: auto; }
+#scroll-top:hover { transform: translateY(-3px); }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .leaderboard-table th:nth-child(4),
+    .leaderboard-table td:nth-child(4) { display: none; }
+}

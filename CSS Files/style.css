@@ -1,0 +1,412 @@
+/* ============================================================
+   style.css — Home Page (index.html)
+   Raindrop Studios / Mōri
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+    --bg:           #0a0806;
+    --bg-surface:   #110e09;
+    --bg-card:      #1a1510;
+    --bg-card-hover:#221c13;
+    --red:          #c0392b;
+    --red-light:    #e74c3c;
+    --red-dim:      rgba(192, 57, 43, 0.15);
+    --gold:         #c9a84c;
+    --gold-light:   #e8c870;
+    --gold-dim:     rgba(201, 168, 76, 0.12);
+    --text:         #f0e6d0;
+    --text-sec:     #9a8870;
+    --text-muted:   #5a4a38;
+    --border:       rgba(201, 168, 76, 0.18);
+    --border-red:   rgba(192, 57, 43, 0.35);
+    --shadow:       0 8px 32px rgba(0,0,0,0.7);
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px);
+    color: var(--text);
+    font-family: 'Raleway', 'Georgia', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Sticky Header ──────────────────────────────────────────── */
+#WelcomeHeader {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 24px 0;
+    background:
+        linear-gradient(90deg, rgba(192,57,43,0.14) 0%, transparent 28%, transparent 72%, rgba(192,57,43,0.14) 100%),
+        linear-gradient(180deg, #1c0d0a 0%, #100907 70%, #0a0806 100%);
+    border-bottom: 1px solid var(--border-red);
+    box-shadow: 0 2px 32px rgba(0,0,0,0.95), inset 0 -1px 0 rgba(192,57,43,0.2);
+}
+
+.Animated-Text {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-size: clamp(1.1rem, 2.8vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-align: center;
+    animation: title-shimmer 4s ease-in-out infinite alternate;
+}
+
+@keyframes title-shimmer {
+    0%   { color: #f0e6d0; text-shadow: 0 0 12px rgba(201,168,76,0.2); }
+    45%  { color: #e8c870; text-shadow: 0 0 22px rgba(201,168,76,0.55); }
+    100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
+}
+
+/* ── Navigation ─────────────────────────────────────────────── */
+#Directory { width: 100%; }
+
+.nav-bar {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 0;
+}
+
+.button {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-sec);
+    padding: 7px 20px;
+    border: 1px solid var(--text-muted);
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.button:hover,
+.button.active {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+    box-shadow: 0 0 14px rgba(192,57,43,0.45);
+}
+
+/* ── Hero Logo ──────────────────────────────────────────────── */
+.hero-logo {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 28px;
+    border-radius: 10px;
+    box-shadow:
+        0 0 0 1px rgba(192,57,43,0.4),
+        0 6px 28px rgba(192,57,43,0.45),
+        0 0 60px rgba(192,57,43,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+/* ── Hero Section ───────────────────────────────────────────── */
+.hero {
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    background:
+        radial-gradient(ellipse at 50% 25%, rgba(192,57,43,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 75%, rgba(192,57,43,0.07) 0%, transparent 40%),
+        linear-gradient(180deg, #0a0806 0%, #130d08 60%, #0a0806 100%);
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+}
+
+.hero-inner { max-width: 860px; }
+
+.hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.85;
+}
+
+.hero-game-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(4.5rem, 14vw, 9rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    color: var(--text);
+    text-shadow:
+        0 0 60px rgba(192,57,43,0.4),
+        0 0 120px rgba(192,57,43,0.15);
+    margin-bottom: 10px;
+}
+
+.hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.hero-divider span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border)); }
+.hero-divider span:last-child { background: linear-gradient(90deg, var(--border), transparent); }
+
+.hero-kanji {
+    flex: none;
+    font-size: 1.4rem;
+    color: var(--gold);
+    opacity: 0.7;
+}
+
+.hero-tagline {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-sec);
+    margin-bottom: 6px;
+}
+
+.hero-period {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 13px 36px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.hero-btn.primary {
+    background: var(--red);
+    color: #fff;
+    border: 1px solid var(--red);
+    box-shadow: 0 4px 18px rgba(192,57,43,0.35);
+}
+.hero-btn.primary:hover {
+    background: var(--red-light);
+    border-color: var(--red-light);
+    box-shadow: 0 6px 24px rgba(231,76,60,0.5);
+    transform: translateY(-2px);
+}
+
+.hero-btn.secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+.hero-btn.secondary:hover {
+    background: var(--gold-dim);
+    box-shadow: 0 4px 18px rgba(201,168,76,0.2);
+    transform: translateY(-2px);
+}
+
+/* ── Main Content Container ─────────────────────────────────── */
+#HomeDescription {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 24px 60px;
+}
+
+/* ── Section Titles ─────────────────────────────────────────── */
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    margin: 10px auto 36px;
+    border-radius: 1px;
+}
+
+/* ── About Block ────────────────────────────────────────────── */
+.about-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 44px;
+    margin-bottom: 60px;
+    font-size: 1.05rem;
+    color: var(--text-sec);
+    line-height: 1.85;
+}
+
+.about-block p + p { margin-top: 1rem; }
+
+.about-block em  { color: var(--text); font-style: italic; }
+.about-block b, .about-block strong { color: var(--text); }
+.about-block u { text-decoration-color: var(--gold); }
+
+/* ── Team Preview Grid ──────────────────────────────────────── */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--red);
+    border-radius: 4px;
+    padding: 24px 20px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    border-color: var(--gold);
+    border-top-color: var(--gold);
+}
+
+.team-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.team-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.team-role {
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+}
+
+/* ── Credits Block ──────────────────────────────────────────── */
+.credits-block {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 28px 36px;
+    background: var(--bg-card);
+}
+
+.credits-block p { color: var(--text-sec); font-size: 0.95rem; }
+.credits-block em { color: var(--text); }
+.credits-block b, .credits-block strong { color: var(--gold); }
+
+/* ── Fade-in animation ──────────────────────────────────────── */
+.fade-in {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Scroll-to-top button ───────────────────────────────────── */
+#scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+#scroll-top:hover { transform: translateY(-3px); }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .about-block { padding: 24px 20px; }
+    .hero-game-title { font-size: clamp(3.5rem, 18vw, 5rem); }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    #scroll-top { bottom: 20px; right: 20px; }
+}
