@@ -1,9 +1,4 @@
-/* ============================================================
-   AboutUsStyle.css — About Us Page
-   Raindrop Studios / Mōri
-   ============================================================ */
 
-/* ── Variables ─────────────────────────────────────────────── */
 :root {
     --bg:           #0a0806;
     --bg-surface:   #110e09;
@@ -21,14 +16,11 @@
     --border-red:   rgba(192, 57, 43, 0.35);
 }
 
-/* ── Reset & Base ───────────────────────────────────────────── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg);
-    background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px),
-        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px);
     color: var(--text);
     font-family: 'Raleway', 'Georgia', sans-serif;
     font-size: 1rem;
@@ -36,9 +28,42 @@ body {
     overflow-x: hidden;
 }
 
+
+.ascii-embed {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ascii-pre {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    overflow: hidden;
+    color: var(--gold);
+    background: transparent;
+    opacity: 0.07;
+    font: 12px/12px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    white-space: pre;
+    user-select: none;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+}
+
+@media (min-width: 900px) {
+    .ascii-pre { font-size: 14px; line-height: 14px; }
+}
+
+#page-content {
+    position: relative;
+    z-index: 1;
+}
+
 a { color: inherit; text-decoration: none; }
 
-/* ── Sticky Header ──────────────────────────────────────────── */
+
 #WelcomeHeader {
     position: sticky;
     top: 0;
@@ -67,7 +92,7 @@ a { color: inherit; text-decoration: none; }
     100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
 }
 
-/* ── Navigation ─────────────────────────────────────────────── */
+
 #Directory { width: 100%; }
 
 .nav-bar {
@@ -103,14 +128,13 @@ a { color: inherit; text-decoration: none; }
     box-shadow: 0 0 14px rgba(192,57,43,0.45);
 }
 
-/* ── Main Container ─────────────────────────────────────────── */
 #AU-Description {
     max-width: 1100px;
     margin: 60px auto;
     padding: 0 24px 80px;
 }
 
-/* ── Section Title ──────────────────────────────────────────── */
+
 .section-title {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.4rem, 3.5vw, 2rem);
@@ -131,7 +155,7 @@ a { color: inherit; text-decoration: none; }
     border-radius: 1px;
 }
 
-/* ── Intro Paragraph ────────────────────────────────────────── */
+
 .intro-text {
     text-align: center;
     max-width: 680px;
@@ -141,7 +165,7 @@ a { color: inherit; text-decoration: none; }
     line-height: 1.85;
 }
 
-/* ── Member Cards Grid ──────────────────────────────────────── */
+
 .member-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
@@ -149,23 +173,39 @@ a { color: inherit; text-decoration: none; }
 }
 
 .member-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--red);
+    background: rgba(10, 8, 6, 0.28);
+    border: 1px solid rgba(201, 168, 76, 0.14);
+    border-top: 3px solid rgba(192, 57, 43, 0.55);
     border-radius: 4px;
     padding: 32px 36px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background 0.4s ease, backdrop-filter 0.4s ease,
+                border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .member-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.65);
+    background: rgba(19, 13, 8, 0.58);
+    border-color: rgba(201, 168, 76, 0.3);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.55),
+        0 14px 36px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* Alternate card accent color */
-.member-card:nth-child(2) { border-top-color: var(--gold); }
-.member-card:nth-child(3) { border-top-color: var(--red-light); }
-.member-card:nth-child(4) { border-top-color: var(--gold-light); }
+
+.member-card:nth-child(2) { border-top-color: rgba(201, 168, 76, 0.55); }
+.member-card:nth-child(3) { border-top-color: rgba(231, 76, 60, 0.55); }
+.member-card:nth-child(4) { border-top-color: rgba(232, 200, 112, 0.55); }
+
+.member-card:nth-child(1):hover { border-top-color: var(--red); }
+.member-card:nth-child(2):hover { border-top-color: var(--gold); }
+.member-card:nth-child(3):hover { border-top-color: var(--red-light); }
+.member-card:nth-child(4):hover { border-top-color: var(--gold-light); }
 
 .member-header {
     display: flex;
@@ -212,7 +252,7 @@ a { color: inherit; text-decoration: none; }
 .member-bio b, .member-bio strong { color: var(--text); }
 .member-bio u { text-decoration-color: var(--gold); }
 
-/* ── Fade-in animation ──────────────────────────────────────── */
+
 .fade-in {
     opacity: 0;
     transform: translateY(22px);
@@ -223,13 +263,13 @@ a { color: inherit; text-decoration: none; }
     transform: translateY(0);
 }
 
-/* add slight delay staggering for the 4 cards */
+
 .member-card:nth-child(1) { transition-delay: 0s; }
 .member-card:nth-child(2) { transition-delay: 0.08s; }
 .member-card:nth-child(3) { transition-delay: 0.16s; }
 .member-card:nth-child(4) { transition-delay: 0.24s; }
 
-/* ── Scroll-to-top ──────────────────────────────────────────── */
+
 #scroll-top {
     position: fixed;
     bottom: 32px;
@@ -253,7 +293,7 @@ a { color: inherit; text-decoration: none; }
 #scroll-top.visible { opacity: 1; pointer-events: auto; }
 #scroll-top:hover { transform: translateY(-3px); }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+
 @media (max-width: 740px) {
     .member-cards-grid { grid-template-columns: 1fr; }
     .member-card { padding: 24px 20px; }
