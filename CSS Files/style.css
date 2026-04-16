@@ -1,4 +1,9 @@
+/* ============================================================
+   style.css — Home Page (index.html)
+   Raindrop Studios / Mōri
+   ============================================================ */
 
+/* ── Variables ─────────────────────────────────────────────── */
 :root {
     --bg:           #0a0806;
     --bg-surface:   #110e09;
@@ -18,10 +23,14 @@
     --shadow:       0 8px 32px rgba(0,0,0,0.7);
 }
 
+/* ── Reset & Base ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg);
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.025) 79px, rgba(201,168,76,0.025) 80px);
     color: var(--text);
     font-family: 'Raleway', 'Georgia', sans-serif;
     font-size: 1rem;
@@ -29,41 +38,9 @@ body {
     overflow-x: hidden;
 }
 
-.ascii-embed {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.ascii-pre {
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    overflow: hidden;
-    color: var(--gold);
-    background: transparent;
-    opacity: 0.07;
-    font: 12px/12px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-    white-space: pre;
-    user-select: none;
-    letter-spacing: 0.5px;
-    pointer-events: none;
-}
-
-@media (min-width: 900px) {
-    .ascii-pre { font-size: 14px; line-height: 14px; }
-}
-
-#page-content {
-    position: relative;
-    z-index: 1;
-}
-
 a { color: inherit; text-decoration: none; }
 
-
+/* ── Sticky Header ──────────────────────────────────────────── */
 #WelcomeHeader {
     position: sticky;
     top: 0;
@@ -94,7 +71,7 @@ a { color: inherit; text-decoration: none; }
     100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
 }
 
-
+/* ── Navigation ─────────────────────────────────────────────── */
 #Directory { width: 100%; }
 
 .nav-bar {
@@ -130,7 +107,7 @@ a { color: inherit; text-decoration: none; }
     box-shadow: 0 0 14px rgba(192,57,43,0.45);
 }
 
-
+/* ── Hero Logo ──────────────────────────────────────────────── */
 .hero-logo {
     width: 88px;
     height: 88px;
@@ -152,7 +129,7 @@ a { color: inherit; text-decoration: none; }
     border-radius: 50%;
 }
 
-
+/* ── Hero Section ───────────────────────────────────────────── */
 .hero {
     min-height: 82vh;
     display: flex;
@@ -163,7 +140,7 @@ a { color: inherit; text-decoration: none; }
     background:
         radial-gradient(ellipse at 50% 25%, rgba(192,57,43,0.18) 0%, transparent 55%),
         radial-gradient(ellipse at 15% 75%, rgba(192,57,43,0.07) 0%, transparent 40%),
-        linear-gradient(180deg, rgba(10,8,6,0.72) 0%, rgba(19,13,8,0.78) 60%, rgba(10,8,6,0.72) 100%);
+        linear-gradient(180deg, #0a0806 0%, #130d08 60%, #0a0806 100%);
     position: relative;
 }
 
@@ -282,14 +259,14 @@ a { color: inherit; text-decoration: none; }
     transform: translateY(-2px);
 }
 
-
+/* ── Main Content Container ─────────────────────────────────── */
 #HomeDescription {
     max-width: 1100px;
     margin: 60px auto;
     padding: 0 24px 60px;
 }
 
-
+/* ── Section Titles ─────────────────────────────────────────── */
 .section-title {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.4rem, 3.5vw, 2rem);
@@ -310,32 +287,16 @@ a { color: inherit; text-decoration: none; }
     border-radius: 1px;
 }
 
-
+/* ── About Block ────────────────────────────────────────────── */
 .about-block {
-    background: rgba(10, 8, 6, 0.28);
-    border: 1px solid rgba(201, 168, 76, 0.14);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 4px;
     padding: 36px 44px;
     margin-bottom: 60px;
     font-size: 1.05rem;
     color: var(--text-sec);
     line-height: 1.85;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.45);
-    transition: background 0.4s ease, backdrop-filter 0.4s ease,
-                border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.about-block:hover {
-    background: rgba(19, 13, 8, 0.52);
-    border-color: rgba(192, 57, 43, 0.4);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    box-shadow:
-        inset 0 0 60px rgba(0, 0, 0, 0.55),
-        0 8px 32px rgba(192, 57, 43, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .about-block p + p { margin-top: 1rem; }
@@ -344,7 +305,7 @@ a { color: inherit; text-decoration: none; }
 .about-block b, .about-block strong { color: var(--text); }
 .about-block u { text-decoration-color: var(--gold); }
 
-
+/* ── Team Preview Grid ──────────────────────────────────────── */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -353,30 +314,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 .team-card {
-    background: rgba(10, 8, 6, 0.28);
-    border: 1px solid rgba(201, 168, 76, 0.14);
-    border-top: 2px solid rgba(192, 57, 43, 0.55);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--red);
     border-radius: 4px;
     padding: 24px 20px;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    box-shadow: inset 0 0 36px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, background 0.4s ease, backdrop-filter 0.4s ease,
-                border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .team-card:hover {
     transform: translateY(-4px);
-    background: rgba(19, 13, 8, 0.58);
-    border-color: rgba(201, 168, 76, 0.35);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    border-color: var(--gold);
     border-top-color: var(--gold);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    box-shadow:
-        inset 0 0 40px rgba(0, 0, 0, 0.55),
-        0 12px 30px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba(201, 168, 76, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .team-number {
@@ -402,36 +352,20 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 0.05em;
 }
 
-
+/* ── Credits Block ──────────────────────────────────────────── */
 .credits-block {
-    background: rgba(10, 8, 6, 0.28);
-    border: 1px solid rgba(201, 168, 76, 0.14);
-    border-left: 3px solid rgba(201, 168, 76, 0.5);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
     border-radius: 4px;
     padding: 28px 36px;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
-    transition: background 0.4s ease, backdrop-filter 0.4s ease,
-                border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.credits-block:hover {
-    background: rgba(19, 13, 8, 0.52);
-    border-left-color: var(--gold);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    box-shadow:
-        inset 0 0 50px rgba(0, 0, 0, 0.55),
-        0 8px 24px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
 }
 
 .credits-block p { color: var(--text-sec); font-size: 0.95rem; }
 .credits-block em { color: var(--text); }
 .credits-block b, .credits-block strong { color: var(--gold); }
 
-
+/* ── Fade-in animation ──────────────────────────────────────── */
 .fade-in {
     opacity: 0;
     transform: translateY(22px);
@@ -442,7 +376,7 @@ a { color: inherit; text-decoration: none; }
     transform: translateY(0);
 }
 
-
+/* ── Scroll-to-top button ───────────────────────────────────── */
 #scroll-top {
     position: fixed;
     bottom: 32px;
@@ -469,7 +403,7 @@ a { color: inherit; text-decoration: none; }
 }
 #scroll-top:hover { transform: translateY(-3px); }
 
-
+/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 600px) {
     .about-block { padding: 24px 20px; }
     .hero-game-title { font-size: clamp(3.5rem, 18vw, 5rem); }
