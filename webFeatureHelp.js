@@ -91,4 +91,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initLightbox();
     initScrollTop();
+    loadLeaderboard();
 });
+
+async function loadLeaderboard(){
+    const SUPABASE_URL = "https://kvxyseitaupuifdqorae.supabase.co/rest/v1/leaderboard";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt2eHlzZWl0YXVwdWlmZHFvcmFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNjA0MjYsImV4cCI6MjA5MTkzNjQyNn0.Jpc7Aqd0QR2yMb1gCUS48uKnMl_7oUL_P64t7EBXock";
+
+    const tbody = document.getElementById("leaderboard-body");
+    if (!tbody) return;
+try {
+        const res = await fetch(`${SUPABASE_URL}?order=rounds.desc,kills.desc&limit=10`, {
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": `Bearer ${SUPABASE_KEY}`
+            }
+        });
+
+        const entries = await res.json();
+
+        tbody.innerHTML = "";
+        entries.forEach((entry, i) => {
+            const date = new Date(entry.created_at).toLocaleDateString();
+            tbody.innerHTML += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${entry.name}</td>
+                    <td>${entry.rounds}</td>
+                    <td>${entry.kills}</td>
+                    <td>${date}</td>
+                </tr>`;
+        });
+    } catch (err) {
+        console.error("Failed to load leaderboard:", err);
+    }
+}
