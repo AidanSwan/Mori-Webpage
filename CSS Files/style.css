@@ -1,9 +1,4 @@
-/* ============================================================
-   style.css — Home Page (index.html)
-   Raindrop Studios / Mōri
-   ============================================================ */
 
-/* ── Variables ─────────────────────────────────────────────── */
 :root {
     --bg:           #0a0806;
     --bg-surface:   #110e09;
@@ -23,7 +18,7 @@
     --shadow:       0 8px 32px rgba(0,0,0,0.7);
 }
 
-/* ── Reset & Base ───────────────────────────────────────────── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -40,7 +35,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* ── Sticky Header ──────────────────────────────────────────── */
+
 #WelcomeHeader {
     position: sticky;
     top: 0;
@@ -71,7 +66,7 @@ a { color: inherit; text-decoration: none; }
     100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
 }
 
-/* ── Navigation ─────────────────────────────────────────────── */
+
 #Directory { width: 100%; }
 
 .nav-bar {
@@ -107,7 +102,7 @@ a { color: inherit; text-decoration: none; }
     box-shadow: 0 0 14px rgba(192,57,43,0.45);
 }
 
-/* ── Hero Logo ──────────────────────────────────────────────── */
+
 .hero-logo {
     width: 88px;
     height: 88px;
@@ -129,7 +124,7 @@ a { color: inherit; text-decoration: none; }
     border-radius: 50%;
 }
 
-/* ── Hero Section ───────────────────────────────────────────── */
+
 .hero {
     min-height: 82vh;
     display: flex;
@@ -259,14 +254,13 @@ a { color: inherit; text-decoration: none; }
     transform: translateY(-2px);
 }
 
-/* ── Main Content Container ─────────────────────────────────── */
 #HomeDescription {
     max-width: 1100px;
     margin: 60px auto;
     padding: 0 24px 60px;
 }
 
-/* ── Section Titles ─────────────────────────────────────────── */
+
 .section-title {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.4rem, 3.5vw, 2rem);
@@ -287,7 +281,7 @@ a { color: inherit; text-decoration: none; }
     border-radius: 1px;
 }
 
-/* ── About Block ────────────────────────────────────────────── */
+
 .about-block {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -305,7 +299,7 @@ a { color: inherit; text-decoration: none; }
 .about-block b, .about-block strong { color: var(--text); }
 .about-block u { text-decoration-color: var(--gold); }
 
-/* ── Team Preview Grid ──────────────────────────────────────── */
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -352,7 +346,6 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 0.05em;
 }
 
-/* ── Credits Block ──────────────────────────────────────────── */
 .credits-block {
     border: 1px solid var(--border);
     border-left: 3px solid var(--gold);
@@ -365,7 +358,7 @@ a { color: inherit; text-decoration: none; }
 .credits-block em { color: var(--text); }
 .credits-block b, .credits-block strong { color: var(--gold); }
 
-/* ── Fade-in animation ──────────────────────────────────────── */
+
 .fade-in {
     opacity: 0;
     transform: translateY(22px);
@@ -376,7 +369,7 @@ a { color: inherit; text-decoration: none; }
     transform: translateY(0);
 }
 
-/* ── Scroll-to-top button ───────────────────────────────────── */
+
 #scroll-top {
     position: fixed;
     bottom: 32px;
@@ -403,7 +396,7 @@ a { color: inherit; text-decoration: none; }
 }
 #scroll-top:hover { transform: translateY(-3px); }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+
 @media (max-width: 600px) {
     .about-block { padding: 24px 20px; }
     .hero-game-title { font-size: clamp(3.5rem, 18vw, 5rem); }
