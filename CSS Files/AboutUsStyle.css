@@ -1,3 +1,5 @@
+
+
 :root {
     --bg:           #0a0806;
     --bg-surface:   #110e09;
@@ -31,6 +33,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+
 #WelcomeHeader {
     position: sticky;
     top: 0;
@@ -58,6 +61,7 @@ a { color: inherit; text-decoration: none; }
     45%  { color: #e8c870; text-shadow: 0 0 22px rgba(201,168,76,0.55); }
     100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
 }
+
 
 #Directory { width: 100%; }
 

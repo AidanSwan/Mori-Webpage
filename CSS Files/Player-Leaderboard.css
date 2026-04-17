@@ -1,9 +1,4 @@
-/* ============================================================
-   Player-Leaderboard.css — Leaderboard Page
-   Raindrop Studios / Mōri
-   ============================================================ */
 
-/* ── Variables ─────────────────────────────────────────────── */
 :root {
     --bg:           #0a0806;
     --bg-surface:   #110e09;
@@ -23,7 +18,6 @@
     --rank-bronze:  #cd7f32;
 }
 
-/* ── Reset & Base ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -40,7 +34,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* ── Sticky Header ──────────────────────────────────────────── */
+
 #WelcomeHeader {
     position: sticky;
     top: 0;
@@ -69,7 +63,7 @@ a { color: inherit; text-decoration: none; }
     100% { color: #e74c3c; text-shadow: 0 0 22px rgba(231,76,60,0.6); }
 }
 
-/* ── Navigation ─────────────────────────────────────────────── */
+
 #Directory { width: 100%; }
 
 .nav-bar {
@@ -105,14 +99,14 @@ a { color: inherit; text-decoration: none; }
     box-shadow: 0 0 14px rgba(192,57,43,0.45);
 }
 
-/* ── Main Container ─────────────────────────────────────────── */
+
 #Leaderboard-Description {
     max-width: 900px;
     margin: 60px auto;
     padding: 0 24px 80px;
 }
 
-/* ── Section Title ──────────────────────────────────────────── */
+
 .section-title {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.4rem, 3.5vw, 2rem);
@@ -133,7 +127,7 @@ a { color: inherit; text-decoration: none; }
     border-radius: 1px;
 }
 
-/* ── Coming Soon Banner ─────────────────────────────────────── */
+
 .coming-soon-banner {
     display: flex;
     align-items: center;
@@ -174,7 +168,7 @@ a { color: inherit; text-decoration: none; }
     font-size: 0.9rem;
 }
 
-/* ── Leaderboard Table ──────────────────────────────────────── */
+
 .leaderboard-wrap {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -237,7 +231,7 @@ a { color: inherit; text-decoration: none; }
     background: rgba(201,168,76,0.04);
 }
 
-/* ── Footer note ────────────────────────────────────────────── */
+
 .leaderboard-note {
     text-align: center;
     font-size: 0.82rem;
@@ -245,7 +239,7 @@ a { color: inherit; text-decoration: none; }
     font-style: italic;
 }
 
-/* ── Fade-in animation ──────────────────────────────────────── */
+
 .fade-in {
     opacity: 0;
     transform: translateY(22px);
@@ -253,7 +247,7 @@ a { color: inherit; text-decoration: none; }
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Scroll-to-top ──────────────────────────────────────────── */
+
 #scroll-top {
     position: fixed;
     bottom: 32px;
@@ -277,7 +271,7 @@ a { color: inherit; text-decoration: none; }
 #scroll-top.visible { opacity: 1; pointer-events: auto; }
 #scroll-top:hover { transform: translateY(-3px); }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+
 @media (max-width: 600px) {
     .leaderboard-table th:nth-child(4),
     .leaderboard-table td:nth-child(4) { display: none; }
