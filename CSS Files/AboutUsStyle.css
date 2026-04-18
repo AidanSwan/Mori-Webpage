@@ -1,5 +1,7 @@
 
 
+html { scroll-behavior: smooth; }
+
 :root {
     --bg:           #0a0806;
     --bg-surface:   #110e09;
