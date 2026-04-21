@@ -433,7 +433,7 @@ a { color: inherit; text-decoration: none; }
         0 0 0 1px rgba(192, 57, 43, 0.25),
         0 24px 60px rgba(0, 0, 0, 0.75),
         0 0 80px rgba(192, 57, 43, 0.08);
-    transition: box-shadow 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.55s ease, box-shadow 0.5s ease, transform 0.55s ease;
 }
 
 .poster-container:hover {
