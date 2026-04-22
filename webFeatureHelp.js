@@ -86,11 +86,28 @@ function initScrollTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+function initTiltEffect() {
+    document.querySelectorAll('.glass-card:not(.trailer-card)').forEach(el => {
+        el.addEventListener('mousemove', e => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const rotateX = ((y - rect.height / 2) / rect.height) * -5;
+            const rotateY = ((x - rect.width / 2) / rect.width) * 5;
+            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     setActiveNav();
     initScrollAnimations();
     initLightbox();
     initScrollTop();
+    initTiltEffect();
     loadLeaderboard();
 });
 
@@ -111,17 +128,20 @@ try {
         const entries = await res.json();
 
         tbody.innerHTML = "";
+        const wrap = tbody.closest('.leaderboard-wrap');
         entries.forEach((entry, i) => {
             const date = new Date(entry.created_at).toLocaleDateString();
-            tbody.innerHTML += `
-                <tr>
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
                     <td>${i + 1}</td>
                     <td>${entry.name}</td>
                     <td>${entry.rounds}</td>
                     <td>${entry.kills}</td>
-                    <td>${date}</td>
-                </tr>`;
+                    <td>${date}</td>`;
+            tbody.appendChild(tr);
+            setTimeout(() => tr.classList.add('row-visible'), 200 + i * 80);
         });
+        if (wrap) setTimeout(() => wrap.classList.add('loaded'), 60);
     } catch (err) {
         console.error("Failed to load leaderboard:", err);
     }
