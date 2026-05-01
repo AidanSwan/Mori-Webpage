@@ -1,6 +1,6 @@
 
 function setActiveNav() {
-    const path = window.location.pathname.split('/').pop() || 'index.html';
+    const path = decodeURIComponent(window.location.pathname.split('/').pop()) || 'index.html';
     document.querySelectorAll('.button').forEach(btn => {
         const href = (btn.getAttribute('href') || '').split('/').pop();
         if (href === path) btn.classList.add('active');
